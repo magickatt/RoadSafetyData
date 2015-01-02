@@ -4,6 +4,7 @@ vendor/*
 
 # Ignore the gov.uk data
 data/*
+!data/test.csv
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 
