@@ -1,6 +1,8 @@
 RoadSafetyData
 ==============
 
+[![Build Status](https://travis-ci.org/magickatt/RoadSafetyData.svg?branch=master)](https://travis-ci.org/magickatt/RoadSafetyData)
+
 Data visualization for gov.uk STATS19 accident report data on road safety
 
 ## Installation
