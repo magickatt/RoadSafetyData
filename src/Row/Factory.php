@@ -2,6 +2,14 @@
 
 namespace Row;
 
-class Factory extends AbstractRow
+class Factory
 {
+    private $strategies = array(
+
+    );
+
+    public function create($data)
+    {
+        return new Accident($data);
+    }
 }

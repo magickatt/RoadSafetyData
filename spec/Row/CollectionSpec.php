@@ -19,9 +19,9 @@ class CollectionSpec extends ObjectBehavior
     function let()
     {
         // Doesn't seem to like being constructed with Prophecy doubles...
-        $this->row1 = new Accident();
-        $this->row2 = new Casualty();
-        $this->row3 = new Vehicle();
+        $this->row1 = new Accident(array());
+        $this->row2 = new Casualty(array());
+        $this->row3 = new Vehicle(array());
 
         $this->beConstructedWith(array(
             $this->row1,
