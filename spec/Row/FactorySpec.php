@@ -6,10 +6,25 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Row\Accident;
 use Row\Casualty;
+use Row\Strategy\Collection;
+use Row\Strategy\HashMap;
 use Row\Vehicle;
 
 class FactorySpec extends ObjectBehavior
 {
+    function let()
+    {
+        $strategyCollection = new Collection(array(
+            new \Row\Strategy\Accident(),
+            new \Row\Strategy\Casualty(),
+            new \Row\Strategy\Vehicle()
+        ));
+
+        $hashMap = new HashMap();
+
+        $this->beConstructedWith($strategyCollection, $hashMap);
+    }
+
     function it_should_create_an_accident_row_if_provided_accident_data()
     {
         $array = array(
@@ -21,7 +36,7 @@ class FactorySpec extends ObjectBehavior
             'Urban_or_Rural_Area','Did_Police_Officer_Attend_Scene_of_Accident','LSOA_of_Accident_Location'
         );
 
-        $this->create($array)->shouldBeLike(new Accident($array));
+        $this->create($array)->shouldBeLike(new Accident());
     }
 
     function it_should_create_an_casualty_row_if_provided_accident_data()
@@ -32,7 +47,7 @@ class FactorySpec extends ObjectBehavior
             'Pedestrian_Road_Maintenance_Worker','Casualty_Type','Casualty_Home_Area_Type'
         );
 
-        $this->create($array)->shouldBeLike(new Casualty($array));
+        $this->create($array)->shouldBeLike(new Casualty());
     }
 
     function it_should_create_an_vehicle_row_if_provided_accident_data()
@@ -44,6 +59,6 @@ class FactorySpec extends ObjectBehavior
             'Sex_of_Driver','Age_Band_of_Driver','Engine_Capacity_(CC)','Propulsion_Code','Age_of_Vehicle','Driver_IMD_Decile','Driver_Home_Area_Type'
         );
 
-        $this->create($array)->shouldBeLike(new Vehicle($array));
+        $this->create($array)->shouldBeLike(new Vehicle());
     }
 }
